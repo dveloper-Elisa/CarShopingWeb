@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "id": { "id": "1" },
+      "field": {
+        "title": "queen pannel bed",
+        "price": 10.99,
+        "image": { "url": "./IMG-20220618-WA0024.jpg" }
+      }
+    }
+  ]
+}
