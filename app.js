@@ -240,3 +240,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   getBagBtn(); // geting all bug buttons
 });
+
+// Removing cart overlay
+
+const cartProduct = document
+  .querySelector(".cart-overlay")
+  .addEventListener("click", (e) => {
+    if (e.target.classList.contains("clear-cart")) {
+      cart = [];
+      localStorage.setItem("cart", JSON.stringify(cart));
+      cartOverlay.classList.remove("transparentBcg");
+      cartDom.classList.remove("showCart");
+    }
+    if (e.target.className == "remove-item") {
+      let id = e.target.dataset;
+      let onCart = JSON.parse(localStorage.getItem("cart"));
+      onCart = onCart.find((product) => product.id != id);
+      localStorage.setItem("cart", JSON.stringify(onCart));
+      e.target.parentElement.parentElement.remove();
+      // count Cart Item
+    }
+    if (e.target.classList.contains("fa-window-close")) {
+      cartOverlay.classList.remove("transparentBcg");
+      cartDom.classList.remove("showCart");
+    }
+  });
+cartItems.addEventListener("click", (e) => {
+  e.preventDefault();
+  cartDom.classList.add("showCart");
+  cartOverlay.classList.add("transparentBcg");
+});
